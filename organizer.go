@@ -71,7 +71,7 @@ type OrganizerEventsRequest struct {
 //
 // https://www.eventbrite.co.uk/developer/v3/endpoints/organizers/#ebapi-get-organizers-id-events
 type OrganizerEventsResult struct {
-	Events []Event `json:"events"`
+	Events     []Event    `json:"events"`
 	Pagination Pagination `json:"pagination"`
 }
 
@@ -90,7 +90,7 @@ func (c *Client) OrganizerCreate(ctx context.Context, req *CreateOrganizerReques
 func (c *Client) OrganizerGet(ctx context.Context, id string) (*Organizer, error) {
 	resp := new(Organizer)
 
-	return resp, c.postJSON(ctx, "/organizers/" + id, nil, resp)
+	return resp, c.postJSON(ctx, "/organizers/"+id, nil, resp)
 }
 
 // OrganizerCreate updates an organizer and returns it as as organizer.
@@ -99,7 +99,7 @@ func (c *Client) OrganizerGet(ctx context.Context, id string) (*Organizer, error
 func (c *Client) OrganizerUpdate(ctx context.Context, id string, req *UpdateOrganizerRequest) (*Organizer, error) {
 	resp := new(Organizer)
 
-	return resp, c.postJSON(ctx, "/organizers/" + id, req, resp)
+	return resp, c.postJSON(ctx, "/organizers/"+id, req, resp)
 }
 
 // OrganizerCreate gets events of the organizer.

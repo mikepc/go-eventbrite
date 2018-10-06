@@ -1,8 +1,8 @@
 package eventbrite
 
 import (
-	"golang.org/x/net/context"
 	"fmt"
+	"golang.org/x/net/context"
 )
 
 // https://www.eventbrite.co.uk/developer/v3/endpoints/events_series/#ebapi-parameters
@@ -12,7 +12,7 @@ type SeriesCreateEventRequest struct {
 	// The description on the event page
 	Description string `json:"series_parent.description.html"`
 	// of the organizer of this event
-	OrganizerID	string `json:"series_parent.organizer_id"`
+	OrganizerID string `json:"series_parent.organizer_id"`
 	// The start time of the event
 	StartUtc DateTime `json:"series_parent.start.utc" validate:"required"`
 	// Start time timezone (Olson format)
@@ -53,14 +53,14 @@ type SeriesCreateEventRequest struct {
 	ShowRemaining bool `json:"series_parent.show_remaining"`
 	// A list of dates for which child events should be created. In the format:
 	// [
-    //   {
-    //     "start": { "utc": "2015-06-15T12:00:00Z", "timezone": "America/Los_Angeles" },
+	//   {
+	//     "start": { "utc": "2015-06-15T12:00:00Z", "timezone": "America/Los_Angeles" },
 	//     "end": { "utc": "2015-06-15T13:00:00Z", "timezone": "America/Los_Angeles" } },
-    //     { ... },
+	//     { ... },
 	//     ...
-    // ]
-    //
-    // https://www.eventbrite.co.uk/developer/v3/response_formats/basic/#ebapi-std:format-objectlist
+	// ]
+	//
+	// https://www.eventbrite.co.uk/developer/v3/response_formats/basic/#ebapi-std:format-objectlist
 	CreateChildren interface{} `json:"create_children" validate:"required"`
 }
 
@@ -92,9 +92,9 @@ type SeriesCUREventRequest struct {
 	//    },
 	//    { ... },
 	//    ...
-    //  ]
-    //
-    // https://www.eventbrite.co.uk/developer/v3/response_formats/basic/#ebapi-std:format-objectlist
+	//  ]
+	//
+	// https://www.eventbrite.co.uk/developer/v3/response_formats/basic/#ebapi-std:format-objectlist
 	CreateChildren interface{} `json:"create_children"`
 	// A map of event IDs to modified date objects for updating child events. In the format:
 	//
@@ -103,7 +103,7 @@ type SeriesCUREventRequest struct {
 	//   "end": { "utc": "2015-06-15T13:00:00Z", "timezone": "America/Los_Angeles" } },
 	//   "5678": { ... },
 	//   ...
-    // }
+	// }
 	UpdateChildren interface{} `json:"create_children"`
 	// A list of IDs for child events that should be deleted. In the format: 1234,5678,9012
 	DeleteChildren []string `json:"delete_children"`
@@ -170,7 +170,7 @@ func (c *Client) EventSeriesCancel(ctx context.Context, id string) (interface{},
 	path := fmt.Sprintf("/series/%s/unpublish", id)
 
 	var resp interface{}
-	return resp,  c.postJSON(ctx, path, nil, &resp)
+	return resp, c.postJSON(ctx, path, nil, &resp)
 }
 
 // Deletes a repeating event series and all of its occurrences if the delete is permitted. In order for a delete to
@@ -189,7 +189,7 @@ func (c *Client) EventSeriesDelete(ctx context.Context, id string) (interface{},
 // series date to be deleted or updated, there must be no pending or completed orders for that date
 //
 // https://www.eventbrite.co.uk/developer/v3/endpoints/events_series/#ebapi-post-series-id-events
-func (c *Client) EventSeriesCUD(ctx context.Context, id string, req *SeriesCUREventRequest)(interface{}, error) {
+func (c *Client) EventSeriesCUD(ctx context.Context, id string, req *SeriesCUREventRequest) (interface{}, error) {
 	var v interface{}
 
 	return v, c.postJSON(ctx, fmt.Sprintf("/series/%s/events/", id), req, v)

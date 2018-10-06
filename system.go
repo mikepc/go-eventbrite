@@ -3,20 +3,20 @@ package eventbrite
 import "golang.org/x/net/context"
 
 type Timezones struct {
-	Locale string `json:"locale"`
-	Timezones []Timezone `json:"timezones"`
+	Locale     string     `json:"locale"`
+	Timezones  []Timezone `json:"timezones"`
 	Pagination Pagination `json:"pagination"`
 }
 
 type Regions struct {
-	Locale string `json:"locale"`
-	Regions []Region `json:"regions"`
+	Locale     string     `json:"locale"`
+	Regions    []Region   `json:"regions"`
 	Pagination Pagination `json:"pagination"`
 }
 
 type Countries struct {
-	Locale string `json:"locale"`
-	Countries []Country `json:"countries"`
+	Locale     string     `json:"locale"`
+	Countries  []Country  `json:"countries"`
 	Pagination Pagination `json:"pagination"`
 }
 
@@ -46,4 +46,3 @@ func (c *Client) Countries(ctx context.Context) (*Countries, error) {
 
 	return res, c.getJSON(ctx, "/system/regions/", nil, res)
 }
-

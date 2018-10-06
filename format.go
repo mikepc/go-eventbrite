@@ -6,7 +6,7 @@ import (
 
 // FormatResult is the response structure for available formats
 type FormatResult struct {
-	Locale string `json:"locale"`
+	Locale  string `json:"locale"`
 	Formats []Format
 }
 
@@ -38,5 +38,5 @@ func (c *Client) Formats(ctx context.Context) (*FormatResult, error) {
 func (c *Client) Format(ctx context.Context, id string) (*Format, error) {
 	res := new(Format)
 
-	return res, c.getJSON(ctx, "/formats/" + id, nil, res)
+	return res, c.getJSON(ctx, "/formats/"+id, nil, res)
 }

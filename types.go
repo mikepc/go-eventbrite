@@ -1,9 +1,9 @@
 package eventbrite
 
 import (
-	"time"
 	"bytes"
 	"fmt"
+	"time"
 )
 
 // When an error occurs during an API request, you’ll get a response with an error HTTP status
@@ -37,8 +37,8 @@ type CurrencyCode string
 
 type Currency struct {
 	Currency CurrencyCode `json:"currency"`
-	Value float32 `json:"value"`
-	Display string `json:"display"`
+	Value    float32      `json:"value"`
+	Display  string       `json:"display"`
 }
 
 type Date struct {
@@ -95,13 +95,12 @@ type Timezone struct {
 //
 // see @https://www.eventbrite.com/developer/v3/api_overview/pagination/#ebapi-paginated-responses
 type Pagination struct {
-	ObjectCount int `json:"object_count"`
-	PageNumber int `json:"page_number"`
-	PageSize int `json:"page_size"`
-	PageCount int `json:"page_count"`
+	ObjectCount  int  `json:"object_count"`
+	PageNumber   int  `json:"page_number"`
+	PageSize     int  `json:"page_size"`
+	PageCount    int  `json:"page_count"`
 	HasMoreItems bool `json:"has_more_items"`
 }
-
 
 // Returned for fields which represent HTML, like event names and descriptions.
 // The html key represents the original HTML (which _should_ be sanitized and free from injected script tags etc.,
@@ -120,8 +119,8 @@ type MultipartText struct {
 // https://www.eventbrite.com/developer/v3/response_formats/basic/#ebapi-datetime-with-timezone
 type DatetimeTz struct {
 	Timezone string `json:"timezone"`
-	Utc string `json:"utc"`
-	Local string `json:"local"`
+	Utc      string `json:"utc"`
+	Local    string `json:"local"`
 }
 
 // Country is an object with details about a country
@@ -163,7 +162,7 @@ type Venue struct {
 	// The value name
 	Name string `json:"name"`
 	// The address of the venue
-	Address Address `json:"name"`
+	Address Address `json:"address"`
 }
 
 // Though address formatting varies considerably between different countries and regions, Eventbrite
@@ -191,7 +190,7 @@ type Address struct {
 	LocalizedAddressDisplay string `json:"localized_address_display"`
 	// The format of the address’s area display localized to the address country
 	LocalizedAreaDisplay string `json:"localized_area_display"`
-	// 	The multi-line format order of the address display localized to the address country, where each line is an item in the list
+	//     The multi-line format order of the address display localized to the address country, where each line is an item in the list
 	LocalizedMultiLineAddressDisplay []interface{} `json:"localized_multi_line_address_display"`
 }
 
@@ -202,7 +201,7 @@ type Address struct {
 type Organizer struct {
 	// The organizer name
 	Name string `json:"name"`
-    // The description of the organizer (may be very long and contain significant formatting)
+	// The description of the organizer (may be very long and contain significant formatting)
 	Description MultipartText `json:"description"`
 	// The URL to the organizer’s page on Eventbrite
 	Url string `json:"url"`
@@ -219,10 +218,10 @@ type Category struct {
 	// The category name localized to the current locale (if available)
 	NameLocalized string `json:"name_localized"`
 	// A shorter name for display in sidebars and other small spaces.
-	ShortName string `json:"sort_name"`
+	ShortName string `json:"short_name"`
 	// List of subcategories, only shown on some endpoints.
 	ShortNameLocalized string `json:"short_name_localized"`
-	SubCategories []SubCategory
+	SubCategories      []SubCategory
 }
 
 // A more specific category that an event falls into, sitting underneath a category.
@@ -311,7 +310,7 @@ type TicketClass struct {
 	// Override the time at which auto hide disables itself to show the ticket (otherwise it’s sales_start)
 	AutoHideBefore string `json:"auto_hide_before"`
 	// Override the time at which auto hide enables itself to re-hide the ticket (otherwise it’s sales_end)
-	AutoHideAfter  string `json:"auto_hide_after"`
+	AutoHideAfter string `json:"auto_hide_after"`
 }
 
 // An entity that Eventbrite uses to allow event organizer to utilize tracking pixels on their events
@@ -332,7 +331,6 @@ type TrackingBeacon struct {
 	// The tracking pixel meta information that determines where your pixel will fire
 	Triggers interface{}
 }
-
 
 // An object representing a single webhook associated with the account
 type Webhook struct {

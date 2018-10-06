@@ -46,9 +46,9 @@ type ContactList struct {
 //
 // https://www.eventbrite.com/developer/v3/response_formats/user/#ebapi-user-emails
 type Email struct {
-	Email string `json:"email"`
-	Verified bool `json:"verified"`
-	Primary bool `json:"primary"`
+	Email    string `json:"email"`
+	Verified bool   `json:"verified"`
+	Primary  bool   `json:"primary"`
 }
 
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-id1
@@ -72,7 +72,7 @@ type Assortment struct {
 
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-id3
 type GetUserOrganizersRequest struct {
-	// 	True: Will hide organizers flagged as “unsaved” False: Will show organizers
+	//     True: Will hide organizers flagged as “unsaved” False: Will show organizers
 	// regardless of unsaved flag (Default value)
 	HideUnsaved bool `json:"hide_unsaved"`
 }
@@ -93,23 +93,23 @@ type GetUserOwnedEvents struct {
 type GetUserEvents struct {
 	// Filter event results by name
 	NameFilter string `json:"name_filter"`
-    // Filter event results by currency
+	// Filter event results by currency
 	CurrencyFilter string `json:"currency_filter"`
-    // How to order the results (Valid choices are: start_asc, start_desc, created_asc,
+	// How to order the results (Valid choices are: start_asc, start_desc, created_asc,
 	// created_desc, name_asc, or name_desc)
 	OrderBy string `json:"order_by"`
-    // True: Will show parent of a serie instead of children False: Will show children of a serie (Default value)
+	// True: Will show parent of a serie instead of children False: Will show children of a serie (Default value)
 	ShowSeriesParent bool `json:"show_series_parent"`
-    // Filter by events with a specific status set. This should be a comma delimited string of status.
+	// Filter by events with a specific status set. This should be a comma delimited string of status.
 	// Valid status: all, draft, live, canceled, started, ended
 	Status string `json:"status"`
-    // Filter event results by event_group_id
+	// Filter event results by event_group_id
 	EventGroupID string `json:"event_group_id"`
-    // Number of records in each page
+	// Number of records in each page
 	PageSize int `json:"page_size"`
-    // Limits results to either past or current & future events / orders. (Valid choices are: all, past, or current_future
+	// Limits results to either past or current & future events / orders. (Valid choices are: all, past, or current_future
 	TimeFilter string `json:"time_filter"`
-    // Filter event results by venue IDs
+	// Filter event results by venue IDs
 	VenueFilter []interface{} `json:"venue_filter"`
 }
 
@@ -117,86 +117,86 @@ type GetUserEvents struct {
 type CreateOrganizationEventRequest struct {
 	// The name of the event. Value cannot be empty nor whitespace.
 	NameHtml string `json:"event.name.html" validate:"required"`
-    // The ID of the organizer of this event
-	DescriptionHtml string	`json:"event.description.html" validate:"required"`
-    // The ID of the organizer of this event
+	// The ID of the organizer of this event
+	DescriptionHtml string `json:"event.description.html" validate:"required"`
+	// The ID of the organizer of this event
 	OrganizerId string `json:"event.organizer_id" validate:"required"`
-    // The start time of the event
+	// The start time of the event
 	StartUtc string `json:"event.start.utc" validate:"required"`
-    // Yes	Start time timezone (Olson format)
+	// Yes    Start time timezone (Olson format)
 	EventStartTimezone string `json:"event.start.timezone" validate:"required"`
-    // The end time of the event
+	// The end time of the event
 	EventEndUtc string `json:"event.end.utc" validate:"required"`
-    //	End time timezone (Olson format)
+	//    End time timezone (Olson format)
 	EventEndTimezone string `json:"event.end.timezone" validate:"required"`
-    // Whether the start date should be hidden
+	// Whether the start date should be hidden
 	EventHideStartDate bool `json:"event.hide_start_date"`
-    // Whether the end date should be hidden
+	// Whether the end date should be hidden
 	EventHideEndDate bool `json:"event.hide_end_date"`
-    // Event currency (3 letter code)
+	// Event currency (3 letter code)
 	EventCurrency string `json:"event.currency" validate:"required"`
-    // The ID of a previously-created venue to associate with this event. You can omit this field or
+	// The ID of a previously-created venue to associate with this event. You can omit this field or
 	// set it to null if you set online_event.
 	VenueId string `json:"event.venue_id"`
-    // Is the event online-only (no venue)?
+	// Is the event online-only (no venue)?
 	OnlineEvent bool `json:"event.online_event"`
-    // If the event is publicly listed and searchable. Defaults to True.
+	// If the event is publicly listed and searchable. Defaults to True.
 	Listed bool `json:"event.listed"`
-    // The logo for the event
+	// The logo for the event
 	LogoId string `json:"event.logo_id"`
-    // The category (vertical) of the event
+	// The category (vertical) of the event
 	CategoryId string `json:"event.category_id"`
-    // The subcategory of the event (US only)
+	// The subcategory of the event (US only)
 	SubcategoryId string `json:"event.subcategory_id"`
-    // The format (general type) of the event
+	// The format (general type) of the event
 	FormatId string `json:"event.format_id"`
-    // If users can share the event on social media
+	// If users can share the event on social media
 	Sharable bool `json:"event.shareable"`
-    // Only invited users can see the event page
+	// Only invited users can see the event page
 	InviteOnly bool `json:"event.invite_only"`
-    // Password needed to see the event in unlisted mode
+	// Password needed to see the event in unlisted mode
 	Password string `json:"event.password"`
-    // Set specific capacity (if omitted, sums ticket capacities)
+	// Set specific capacity (if omitted, sums ticket capacities)
 	Capacity int `json:"event.capacity"`
-    // If the remaining number of tickets is publicly visible on the event page
+	// If the remaining number of tickets is publicly visible on the event page
 	ShowRemaining bool `json:"event.show_remaining"`
-    // If the event is reserved seating
+	// If the event is reserved seating
 	IsReservedSeating bool `json:"event.is_reserved_seating"`
-    // Source of the event (defaults to API)
+	// Source of the event (defaults to API)
 	Source string `json:"event.source"`
 }
 
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-venues
 type GetUserVenuesResult struct {
 	Pagination Pagination `json:"pagination"`
-	Venues []Venue `json:"venues"`
+	Venues     []Venue    `json:"venues"`
 }
 
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-id13
 type CreateOrganizationVenueRequest struct {
 	// The name of the venue
 	Name string `json:"venue.name" validate:"required"`
-    // The organizer this venue belongs to (optional - leave this off to use the default organizer)
+	// The organizer this venue belongs to (optional - leave this off to use the default organizer)
 	OrganizerID string `json:"venue.organizer_id"`
-    // The first line of the address
+	// The first line of the address
 	Address1 string `json:"venue.address.address_1"`
-    // The second line of the address
+	// The second line of the address
 	Address2 string `json:"venue.address.address_2"`
-    // The city where the venue is
+	// The city where the venue is
 	City string `json:"venue.address.city"`
-    // The region where the venue is
+	// The region where the venue is
 	Region string `json:"venue.address.region"`
-    // The postal_code where the venue is
+	// The postal_code where the venue is
 	PostalCode string `json:"venue.address.postal_code"`
-    // The country where the venue is
+	// The country where the venue is
 	Country string `json:"venue.address.country"`
-    // The latitude of the coordinates for the venue
+	// The latitude of the coordinates for the venue
 	Latitude float64 `json:"venue.address.latitude"`
-    // The longitude of the coordinates for the venue
+	// The longitude of the coordinates for the venue
 	Longitude float64 `json:"venue.address.longitude"`
-    // The age restrictions for the venue
+	// The age restrictions for the venue
 	AgeRestriction string `json:"venue.age_restriction"`
-    // The max capacity for the venue
+	// The max capacity for the venue
 	Capacity int `json:"venue.capacity"`
 }
 
@@ -207,7 +207,7 @@ type UserEventAttendeesRequest struct {
 	// Limits results to either confirmed attendees or cancelled/refunded/etc. attendees
 	// (Valid choices are: attending, or not_attending)
 	Status string `json:"status"`
-    // Only return resource changed on or after the time given
+	// Only return resource changed on or after the time given
 	ChangedSince string `json:"changed_since"`
 }
 
@@ -216,7 +216,7 @@ type UserEventAttendeesRequest struct {
 // https://www.eventbrite.co.uk/developer/v3/endpoints/users/#ebapi-get-users-id-owned-event-attendees
 type UserEventAttendeesResponse struct {
 	Pagination Pagination `json:"pagination"`
-	Attendees []Attendee `json:"attendee"`
+	Attendees  []Attendee `json:"attendee"`
 }
 
 // UserEventOrders is the request structure to get all order placed under
@@ -236,7 +236,7 @@ type UserEventOrders struct {
 // https://www.eventbrite.co.uk/developer/v3/endpoints/users/#ebapi-get-users-id-orders
 type UserOrdersResult struct {
 	Pagination Pagination `json:"pagination"`
-	Orders []Order `json:"orders"`
+	Orders     []Order    `json:"orders"`
 }
 
 // UserOrganizerRequest is the request structure to get all organizer objects that are owned by the user
@@ -250,7 +250,7 @@ type UserOrganizerRequest struct {
 
 // UserOrganizerResponse is the response structure for all organizer objects that are owned by the user
 type UserOrganizerResponse struct {
-	Pagination Pagination `json:"pagination"`
+	Pagination Pagination  `json:"pagination"`
 	Organizers []Organizer `json:"organizers"`
 }
 
@@ -271,11 +271,10 @@ type UserOwnedEventsRequest struct {
 // UserOwnedEventResponse is the response structure to get user owned events
 type UserOwnedEventResponse struct {
 	Pagination Pagination `json:"pagination"`
-	Events []Event `json:"events"`
+	Events     []Event    `json:"events"`
 }
 
 type UserEventsRequest struct {
-
 }
 
 type UserEventsResponse struct {
@@ -303,26 +302,26 @@ type UserEventsResponse struct {
 // UserVenuesResponse is the response structure to get user owned venues
 type UserVenuesResponse struct {
 	Pagination Pagination `json:"pagination"`
-	Venues []Venue `json:"venues"`
+	Venues     []Venue    `json:"venues"`
 }
 
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-id17
 type UserEventOrdersRequest struct {
-	Status string `json:"status"`
-	OnlyEmails []string `json:"only_emails"`
+	Status        string   `json:"status"`
+	OnlyEmails    []string `json:"only_emails"`
 	ExcludeEmails []string `json:"exclude_emails"`
-	ChangedSince DateTime `json:"datetime"`
+	ChangedSince  DateTime `json:"datetime"`
 }
 
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-owned-event-orders
 type UserEventOrdersResponse struct {
 	Pagination Pagination `json:"pagination"`
-	Orders []Order `json:"orders"`
+	Orders     []Order    `json:"orders"`
 }
 
 // UserContactListsResponse is the response structure to get user contact lists
 type UserContactListsResponse struct {
-	Pagination Pagination `json:"pagination"`
+	Pagination  Pagination    `json:"pagination"`
 	ContactList []ContactList `json:"contact_lists"`
 }
 
@@ -350,7 +349,7 @@ type UserDeleteContactListContactRequest struct {
 
 type UserContactListContacts struct {
 	Pagination Pagination `json:"pagination"`
-	Contacts []Contact `json:"contacts"`
+	Contacts   []Contact  `json:"contacts"`
 }
 
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-id35
@@ -361,7 +360,7 @@ type UserBookmarksRequest struct {
 
 type UserBookmarksResponse struct {
 	Pagination Pagination `json:"pagination"`
-	Events []Event `json:"events"`
+	Events     []Event    `json:"events"`
 }
 
 type UserSaveBookmarkRequest struct {
@@ -383,12 +382,12 @@ type UserUnSaveBookmarkRequest struct {
 }
 
 type UserTicketGroupsRequest struct {
-	// 	Limits results to groups with the specific status (Valid choices are: live, archived, deleted, or all)
+	//     Limits results to groups with the specific status (Valid choices are: live, archived, deleted, or all)
 	Status string `json:"status"`
 }
 
 type UserTicketGroupResponse struct {
-	Pagination Pagination `json:"pagination"`
+	Pagination   Pagination `json:"pagination"`
 	TicketGroups []*TicketGroup
 }
 
@@ -402,7 +401,7 @@ type UserSetAssortmentRequest struct {
 //
 // https://www.eventbrite.co.uk/developer/v3/endpoints/users/#ebapi-get-users-id
 func (c *Client) User(ctx context.Context, id string) (*User, error) {
-	u := new (User)
+	u := new(User)
 
 	return u, c.getJSON(ctx, fmt.Sprintf("/users/%s/", id), nil, u)
 }
@@ -412,7 +411,7 @@ func (c *Client) User(ctx context.Context, id string) (*User, error) {
 //
 // https://www.eventbrite.co.uk/developer/v3/endpoints/users/#ebapi-get-users-id-orders
 func (c *Client) UserOrders(ctx context.Context, id string, req *UserEventOrders) (*UserOrdersResult, error) {
-	r := new (UserOrdersResult)
+	r := new(UserOrdersResult)
 
 	return r, c.getJSON(ctx, fmt.Sprintf("/users/%s/orders/", id), req, r)
 }
@@ -421,7 +420,7 @@ func (c *Client) UserOrders(ctx context.Context, id string, req *UserEventOrders
 //
 // https://www.eventbrite.co.uk/developer/v3/endpoints/users/#ebapi-get-users-id-organizers
 func (c *Client) UserOrganizers(ctx context.Context, id string, req *UserOrganizerRequest) (*UserOrganizerResponse, error) {
-	r := new (UserOrganizerResponse)
+	r := new(UserOrganizerResponse)
 
 	return r, c.getJSON(ctx, fmt.Sprintf("/users/%s/organizers/", id), req, r)
 }
@@ -430,7 +429,7 @@ func (c *Client) UserOrganizers(ctx context.Context, id string, req *UserOrganiz
 //
 // https://www.eventbrite.co.uk/developer/v3/endpoints/users/#ebapi-get-users-id-organizers
 func (c *Client) UserOwnedEvents(ctx context.Context, id string, req *UserOwnedEventsRequest) (*UserOwnedEventResponse, error) {
-	r := new (UserOwnedEventResponse)
+	r := new(UserOwnedEventResponse)
 
 	return r, c.getJSON(ctx, fmt.Sprintf("/users/%s/owned_events/", id), req, r)
 }
@@ -439,14 +438,14 @@ func (c *Client) UserOwnedEvents(ctx context.Context, id string, req *UserOwnedE
 //
 // https://www.eventbrite.co.uk/developer/v3/endpoints/users/#ebapi-get-users-id-events
 func (c *Client) UserEvents(ctx context.Context, id string, req UserEventsRequest) (*UserEventsResponse, error) {
-	r := new (UserEventsResponse)
+	r := new(UserEventsResponse)
 
 	return r, c.getJSON(ctx, fmt.Sprintf("/users/%s/events/", id), req, r)
 }
 
 // UserVenues returns a paginated response of venue objects that are owned by the user
 func (c *Client) UserVenues(ctx context.Context, id string) (*UserVenuesResponse, error) {
-	r := new (UserVenuesResponse)
+	r := new(UserVenuesResponse)
 
 	return r, c.getJSON(ctx, fmt.Sprintf("/users/%s/events/", id), nil, r)
 }
@@ -456,7 +455,7 @@ func (c *Client) UserVenues(ctx context.Context, id string) (*UserVenuesResponse
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-owned-event-attendees
 func (c *Client) UserEventAttendees(ctx context.Context, id string, request *UserEventAttendeesRequest) (*UserEventAttendeesResponse, error) {
-	r := new (UserEventAttendeesResponse)
+	r := new(UserEventAttendeesResponse)
 
 	return r, c.getJSON(ctx, fmt.Sprintf("/users/%s/owned_event_attendees/", id), request, r)
 
@@ -467,7 +466,7 @@ func (c *Client) UserEventAttendees(ctx context.Context, id string, request *Use
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-owned-event-orders
 func (c *Client) UserEventOrders(ctx context.Context, id string, request *UserEventOrdersRequest) (*UserEventOrdersResponse, error) {
-	r := new (UserEventOrdersResponse)
+	r := new(UserEventOrdersResponse)
 
 	return r, c.getJSON(ctx, fmt.Sprintf("/users/%s/owned_event_orders/", id), request, r)
 
@@ -477,7 +476,7 @@ func (c *Client) UserEventOrders(ctx context.Context, id string, request *UserEv
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-contact-lists
 func (c *Client) UserContactLists(ctx context.Context, id string) (*UserContactListsResponse, error) {
-	r := new (UserContactListsResponse)
+	r := new(UserContactListsResponse)
 
 	return r, c.getJSON(ctx, fmt.Sprintf("/users/%s/contact_lists/", id), nil, r)
 }
@@ -486,7 +485,7 @@ func (c *Client) UserContactLists(ctx context.Context, id string) (*UserContactL
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-post-users-id-contact-lists
 func (c *Client) UserCreateContactList(ctx context.Context, id string, request *UserCreateContactListsRequest) (*UserContactListsResponse, error) {
-	r := new (UserContactListsResponse)
+	r := new(UserContactListsResponse)
 
 	return r, c.postJSON(ctx, fmt.Sprintf("/users/%s/owned_event_orders/", id), request, r)
 }
@@ -495,17 +494,16 @@ func (c *Client) UserCreateContactList(ctx context.Context, id string, request *
 //
 // hhttps://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-contact-lists-contact-list-id
 func (c *Client) UserContactList(ctx context.Context, id, contactListID string, request *UserCreateContactListsRequest) (*UserContactListsResponse, error) {
-	r := new (UserContactListsResponse)
+	r := new(UserContactListsResponse)
 
 	return r, c.getJSON(ctx, fmt.Sprintf("/users/%s/contact_lists/%s/", id, contactListID), request, r)
 }
-
 
 // UserUpdateContactList updates the contact_list and returns it as contact_list
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-post-users-id-contact-lists-contact-list-id
 func (c *Client) UserUpdateContactList(ctx context.Context, id, contactListID string, request *UserUpdateContactListRequest) (*UserContactListsResponse, error) {
-	r := new (UserContactListsResponse)
+	r := new(UserContactListsResponse)
 
 	return r, c.postJSON(ctx, fmt.Sprintf("/users/%s/contact_lists/%s/", id, contactListID), request, r)
 }
@@ -523,7 +521,7 @@ func (c *Client) UserDeleteContactList(ctx context.Context, id, contactListID st
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-contact-lists-contact-list-id-contacts
 func (c *Client) UserListContactContacts(ctx context.Context, id, contactListID string) (*UserContactListContacts, error) {
-	r := new (UserContactListContacts)
+	r := new(UserContactListContacts)
 
 	return r, c.postJSON(ctx, fmt.Sprintf("/users/%s/contact_lists/%s/contacts/", id, contactListID), nil, r)
 }
@@ -533,7 +531,7 @@ func (c *Client) UserListContactContacts(ctx context.Context, id, contactListID 
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-contact-lists-contact-list-id-contacts
 func (c *Client) UserListContactAddContacts(ctx context.Context, id, contactListID string, req *UserAddContactListContactRequest) (*UserContactListContacts, error) {
-	r := new (UserContactListContacts)
+	r := new(UserContactListContacts)
 
 	return r, c.postJSON(ctx, fmt.Sprintf("/users/%s/contact_lists/%s/contacts/", id, contactListID), req, r)
 }
@@ -543,7 +541,7 @@ func (c *Client) UserListContactAddContacts(ctx context.Context, id, contactList
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-contact-lists-contact-list-id-contacts
 func (c *Client) UserListContactDeleteContacts(ctx context.Context, id, contactListID string) (interface{}, error) {
-	r := new (UserContactListContacts)
+	r := new(UserContactListContacts)
 
 	return r, c.deleteJSON(ctx, fmt.Sprintf("/users/%s/contact_lists/%s/contacts/", id, contactListID), r)
 }
@@ -554,7 +552,7 @@ func (c *Client) UserListContactDeleteContacts(ctx context.Context, id, contactL
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-bookmarks
 func (c *Client) UserBookmarks(ctx context.Context, id string, req *UserBookmarksRequest) (*UserBookmarksResponse, error) {
-	r := new (UserBookmarksResponse)
+	r := new(UserBookmarksResponse)
 
 	return r, c.getJSON(ctx, fmt.Sprintf("/users/%s/bookmarks/", id), req, r)
 }
@@ -568,7 +566,6 @@ func (c *Client) UserSaveBookmarks(ctx context.Context, id string, req *UserSave
 
 	return v, c.getJSON(ctx, fmt.Sprintf("/users/%s/bookmarks/save", id), req, v)
 }
-
 
 // UserUnSaveBookmarks removes the specified bookmark from the event for the user. Returns {"deleted": true}.
 // A user is only authorized to unsave his/her own events.
@@ -584,7 +581,7 @@ func (c *Client) UserUnSaveBookmarks(ctx context.Context, id string, req *UserUn
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-assortment
 func (c *Client) UserAssortments(ctx context.Context, id string) (*Assortment, error) {
-	a := new (Assortment)
+	a := new(Assortment)
 
 	return a, c.getJSON(ctx, fmt.Sprintf("/users/%s/assortment/", id), nil, a)
 }
@@ -593,7 +590,7 @@ func (c *Client) UserAssortments(ctx context.Context, id string) (*Assortment, e
 //
 // https://www.eventbrite.com/developer/v3/endpoints/users/#ebapi-get-users-id-assortment
 func (c *Client) UserSetAssortments(ctx context.Context, id string, req *UserSetAssortmentRequest) (*Assortment, error) {
-	a := new (Assortment)
+	a := new(Assortment)
 
 	return a, c.postJSON(ctx, fmt.Sprintf("/users/%s/assortment/", id), req, a)
 }

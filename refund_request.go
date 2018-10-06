@@ -81,7 +81,7 @@ type UpdateRefundRequest struct {
 func (c *Client) RefundRequest(ctx context.Context, id string) (*RefundRequest, error) {
 	res := new(RefundRequest)
 
-	return res, c.getJSON(ctx, "/refund_requests/" + id, nil, res)
+	return res, c.getJSON(ctx, "/refund_requests/"+id, nil, res)
 }
 
 // RefundRequestUpdate updates a refund-request for a specific order. Each element in items is a refund-item
@@ -90,7 +90,7 @@ func (c *Client) RefundRequest(ctx context.Context, id string) (*RefundRequest, 
 func (c *Client) RefundRequestUpdate(ctx context.Context, id string, req *UpdateOrganizerRequest) (*RefundRequest, error) {
 	res := new(RefundRequest)
 
-	return res, c.postJSON(ctx, "/refund_requests/" + id, nil, res)
+	return res, c.postJSON(ctx, "/refund_requests/"+id, nil, res)
 }
 
 // RefundRequestCreate creates a refund-request for a specific order. Each element in items is a refund-item

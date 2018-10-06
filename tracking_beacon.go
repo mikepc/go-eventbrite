@@ -77,7 +77,7 @@ func (c *Client) TrackingBeaconCreate(ctx context.Context, req *CreateTrackingBe
 func (c *Client) TrackingBeaconGet(ctx context.Context, id string, req *GetTrackingBeaconRequest) (*TrackingBeacon, error) {
 	res := new(TrackingBeacon)
 
-	return res, c.getJSON(ctx, "/tracking_beacons/" + id, req, res)
+	return res, c.getJSON(ctx, "/tracking_beacons/"+id, req, res)
 }
 
 // TrackingBeaconGet updates the tracking_beacons with the specified :tracking_beacons_id. Though event_id and
@@ -88,7 +88,7 @@ func (c *Client) TrackingBeaconGet(ctx context.Context, id string, req *GetTrack
 func (c *Client) TrackingBeaconUpdate(ctx context.Context, id string, req *UpdateTrackingBeaconRequest) (*TrackingBeacon, error) {
 	res := new(TrackingBeacon)
 
-	return res, c.postJSON(ctx, "/tracking_beacons/" + id, req, res)
+	return res, c.postJSON(ctx, "/tracking_beacons/"+id, req, res)
 }
 
 // TrackingBeaconDelete delete the tracking_beacons with the specified :tracking_beacons_id
@@ -97,7 +97,7 @@ func (c *Client) TrackingBeaconUpdate(ctx context.Context, id string, req *Updat
 func (c *Client) TrackingBeaconDelete(ctx context.Context, id string) (*TrackingBeacon, error) {
 	res := new(TrackingBeacon)
 
-	return res, c.deleteJSON(ctx, "/tracking_beacons/" + id, res)
+	return res, c.deleteJSON(ctx, "/tracking_beacons/"+id, res)
 }
 
 // TrackingBeaconGetForEvent returns the list of tracking_beacon for the event :event_id

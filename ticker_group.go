@@ -54,7 +54,7 @@ type UpdateTicketGroupRequest struct {
 func (c *Client) TicketGroupGet(ctx context.Context, id string) (*TicketGroup, error) {
 	res := new(TicketGroup)
 
-	return res, c.getJSON(ctx, "/ticket_groups/" + id, nil, res)
+	return res, c.getJSON(ctx, "/ticket_groups/"+id, nil, res)
 }
 
 // TicketGroupGet deletes the ticket_group with the specified :ticket_group_id. The status of the ticket group is changed to deleted.
@@ -62,7 +62,7 @@ func (c *Client) TicketGroupGet(ctx context.Context, id string) (*TicketGroup, e
 // https://www.eventbrite.com/developer/v3/endpoints/ticket_groups/#ebapi-delete-ticket-groups-ticket-group-id
 func (c *Client) TicketGroupDelete(ctx context.Context, id string) (interface{}, error) {
 	var res interface{}
-	return res, c.deleteJSON(ctx, "/ticket_groups/" + id, &res)
+	return res, c.deleteJSON(ctx, "/ticket_groups/"+id, &res)
 }
 
 // TicketGroupGet creates a ticket group and returns the created ticket_group. Only up to 200 live ticket groups may be created;
@@ -72,7 +72,7 @@ func (c *Client) TicketGroupDelete(ctx context.Context, id string) (interface{},
 func (c *Client) TicketGroupCreate(ctx context.Context, id string, req *CreateTicketGroupRequest) (*TicketGroup, error) {
 	res := new(TicketGroup)
 
-	return res, c.postJSON(ctx, "/ticket_groups/" + id, req, &res)
+	return res, c.postJSON(ctx, "/ticket_groups/"+id, req, &res)
 }
 
 // TicketGroupGet updates the ticket group with the specified :ticket_group_id. Returns the updated ticket_group
@@ -81,5 +81,5 @@ func (c *Client) TicketGroupCreate(ctx context.Context, id string, req *CreateTi
 func (c *Client) TicketGroupUpdate(ctx context.Context, id string, req *UpdateTicketGroupRequest) (*TicketGroup, error) {
 	res := new(TicketGroup)
 
-	return res, c.postJSON(ctx, "/ticket_groups/" + id, req, &res)
+	return res, c.postJSON(ctx, "/ticket_groups/"+id, req, &res)
 }

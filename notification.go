@@ -5,7 +5,7 @@ import "golang.org/x/net/context"
 // NotificationsResult is the response structure fornotifications
 type NotificationsResult struct {
 	Notifications []Notification
-	Pagination Pagination
+	Pagination    Pagination
 }
 
 // Notification is the representation of something that Eventbrite has notified to its users.

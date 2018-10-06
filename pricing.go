@@ -41,7 +41,7 @@ type FeeRate struct {
 type FeeRequest struct {
 	// The (ISO 3166 alpha-2 code of the) country where you want to know the fee rates
 	Country CountryCode `json:"country" validate:"required"`
-	// 	The (ISO 4217 3-character code of the) currency where you want to know the fee rates
+	//     The (ISO 4217 3-character code of the) currency where you want to know the fee rates
 	Currency CurrencyCode `json:"currency" validate:"required"`
 	// The assortment package name to get the price for. One of [‘any’, ‘package1’, ‘package2’].
 	// If it’s not provided, or the value is ‘any’, all the existing variants will be returned.’

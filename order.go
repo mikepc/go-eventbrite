@@ -1,8 +1,8 @@
 package eventbrite
 
 import (
-	"golang.org/x/net/context"
 	"fmt"
+	"golang.org/x/net/context"
 )
 
 // Order is an object representing an order made against Eventbrite for one or more ticket classes
@@ -55,7 +55,7 @@ type OrderCosts struct {
 //
 // https://www.eventbrite.com/developer/v3/endpoints/orders/#ebapi-orders
 func (c *Client) OrderGet(ctx context.Context, id string) (*Order, error) {
-	o := new (Order)
+	o := new(Order)
 
 	return o, c.getJSON(ctx, fmt.Sprintf("/orders/%s/", id), nil, o)
 }

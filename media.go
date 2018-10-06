@@ -1,8 +1,8 @@
 package eventbrite
 
 import (
-	"golang.org/x/net/context"
 	"fmt"
+	"golang.org/x/net/context"
 )
 
 // https://www.eventbrite.com/developer/v3/resources/uploads/
@@ -21,11 +21,11 @@ type Media struct {
 
 type UploadData struct {
 	AWSAccessKeyID string `json:"AWSAccessKeyId"`
-	Bucket string `json:"bucket"`
-	Acl string `json:"acl"`
-	Key string `json:"kcl"`
-	Signature string `json:"signature"`
-	Policy string `json:"policy"`
+	Bucket         string `json:"bucket"`
+	Acl            string `json:"acl"`
+	Key            string `json:"kcl"`
+	Signature      string `json:"signature"`
+	Policy         string `json:"policy"`
 }
 
 // https://www.eventbrite.com/developer/v3/endpoints/media/#ebapi-id1
@@ -52,7 +52,7 @@ type MediaCreateUpload struct {
 // https://www.eventbrite.com/developer/v3/endpoints/media/#ebapi-get-media-upload
 // https://www.eventbrite.com/developer/v3/resources/uploads/
 func (c *Client) MediaGet(ctx context.Context, req *MediaGetUpload) (*Media, error) {
-	m := new (Media)
+	m := new(Media)
 
 	return m, c.getJSON(ctx, "/media/upload/", req, m)
 }
@@ -61,14 +61,14 @@ func (c *Client) MediaGet(ctx context.Context, req *MediaGetUpload) (*Media, err
 //
 // https://www.eventbrite.com/developer/v3/endpoints/media/#ebapi-get-media-id
 func (c *Client) MediaGetUpload(ctx context.Context, id string) (*Image, error) {
-	i := new (Image)
+	i := new(Image)
 
 	return i, c.getJSON(ctx, fmt.Sprintf("/media/%s/", id), nil, i)
 }
 
 // https://www.eventbrite.com/developer/v3/endpoints/media/#ebapi-post-media-upload
 func (c *Client) MediaCreate(ctx context.Context, req *MediaCreateUpload) (*Image, error) {
-	i := new (Image)
+	i := new(Image)
 
 	return i, c.getJSON(ctx, fmt.Sprintf("/media/upload/"), req, i)
 }
